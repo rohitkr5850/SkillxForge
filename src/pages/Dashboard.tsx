@@ -41,11 +41,12 @@ const Dashboard: React.FC = () => {
       }
 
       const [coursesRes, myCoursesRes] = await Promise.all([
-        axios.get('/api/courses'),
-        axios.get('/api/courses/my-courses', {
+        axios.get(`${import.meta.env.VITE_BASE_URL}/api/courses`),
+        axios.get(`${import.meta.env.VITE_BASE_URL}/api/courses/my-courses`, {
           headers: { Authorization: `Bearer ${token}` }
         })
       ]);
+      
       setCourses(coursesRes.data);
       setMyCourses(myCoursesRes.data);
     } catch (error) {
