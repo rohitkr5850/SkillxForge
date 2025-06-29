@@ -51,7 +51,7 @@ const CourseView: React.FC = () => {
 
   const fetchCourse = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/courses/${id}`, {
+      const response = await axios.get(`/api/courses/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       setCourse(response.data);
@@ -61,11 +61,11 @@ const CourseView: React.FC = () => {
       setLoading(false);
     }
   };
-  
+
   const handleEnroll = async () => {
     setEnrolling(true);
     try {
-      await axios.post(`${import.meta.env.VITE_BASE_URL}/api/courses/${id}/enroll`, {}, {
+      await axios.post(`/api/courses/${id}/enroll`, {}, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       fetchCourse(); // Refresh course data
@@ -75,7 +75,7 @@ const CourseView: React.FC = () => {
       setEnrolling(false);
     }
   };
-  
+
   const markModuleComplete = async (moduleIndex: number) => {
     try {
       await axios.post(`/api/courses/${id}/complete-module`, {
