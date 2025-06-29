@@ -53,7 +53,7 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(passport.initialize());
 
 // Connect to MongoDB - Remove deprecated options
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/skillforge')
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://rroy834041:lROnq8ugSheEHaip@skillxforge.e513ujw.mongodb.net/?retryWrites=true&w=majority&appName=SkillxForge')
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.error('MongoDB connection error:', err));
 
